@@ -1,0 +1,23 @@
+name: Deploy NEURA ROCK
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Deploy via SSH
+        uses: appleboy/ssh-action@v1
+        with:
+          host: 194.226.163.109
+          username: root
+          key: ${{ secrets.SERVER_SSH_KEY }}
+          script: |
+            cd /var/www/rock-ai.online
+            git pull origin main
+            pm2 restart neurarock
+            echo "Deploy OK $(date)"
