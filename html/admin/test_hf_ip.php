@@ -1,6 +1,6 @@
 <?php
 // Fix: если не резолвится DNS, используем IP напрямую
-$token = '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';
+$token = getenv('HF_TOKEN') ?: '';
 $host  = 'api-inference.huggingface.co';
 $ip    = '18.244.164.92';
 

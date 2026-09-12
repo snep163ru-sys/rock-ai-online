@@ -1,6 +1,6 @@
 <?php
 // Test via HF router proxy
-$token = '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';
+$token = getenv('HF_TOKEN') ?: '';
 $url   = 'https://router.huggingface.co/hf-inference/models/facebook/musicgen-small';
 
 $ch = curl_init($url);

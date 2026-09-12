@@ -1,5 +1,5 @@
 <?php
-$token = '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';
+$token = getenv('HF_TOKEN') ?: '';
 $ch = curl_init('https://api-inference.huggingface.co/models/facebook/musicgen-small');
 curl_setopt_array($ch, [
     CURLOPT_HTTPHEADER => ["Authorization: Bearer $token", 'Content-Type: application/json'],

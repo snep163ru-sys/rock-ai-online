@@ -13,7 +13,7 @@
 // ======================== НАСТРОЙКИ ========================
 
 // Hugging Face токен — получи на https://huggingface.co/settings/tokens
-define('HF_TOKEN', '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');
+define('HF_TOKEN', getenv('HF_TOKEN') ?: '');
 
 // Модель: facebook/musicgen-small | facebook/musicgen-medium | facebook/musicgen-large
 define('HF_MODEL', 'facebook/musicgen-small');
