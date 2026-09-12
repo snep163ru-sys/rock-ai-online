@@ -1,0 +1,767 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- SEO -->
+    <title>NEURA ROCK — ИИ-радио с рок-музыкой от нейросетей</title>
+    <meta name="description" content="🎸 NEURA ROCK — первое ИИ-радио, где нейросети создают рок-музыку. 12 жанров, бесконечный поток уникальных треков. Слушай онлайн бесплатно.">
+    <meta name="keywords" content="ИИ радио, рок музыка, нейросети, генерация музыки, AI radio, rock music, Neura Rock">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://rock-ai.online/">
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+
+    <!-- Open Graph теги для соцсетей (Telegram, VK, Facebook) -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://rock-ai.online">
+    <meta property="og:title" content="NEURA ROCK | ИИ Рок-Радио">
+    <meta property="og:description" content="🎸 Бесконечный поток рок-музыки, созданный искусственным интеллектом. 12 жанров, уникальные треки, нейросетевая генерация.">
+    <meta property="og:image" content="https://rock-ai.online/og-image-new.png">
+    <meta property="og:image:secure_url" content="https://rock-ai.online/og-image-new.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:site_name" content="NEURA ROCK Radio">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="NEURA ROCK | ИИ Рок-Радио">
+    <meta name="twitter:description" content="🎸 Бесконечный поток рок-музыки, созданный искусственным интеллектом.">
+    <meta name="twitter:image" content="https://rock-ai.online/og-image-new.png">
+
+    <!-- Yandex.Metrika counter -->
+    <script type="text/javascript">
+        (function(m,e,t,r,i,k,a){
+            m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+            m[i].l=1*new Date();
+            for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
+            k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)
+        })(window, document,'script','https://mc.yandex.ru/metrika/tag.js?id=110838788', 'ym');
+
+        ym(110838788, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLayer", referrer: document.referrer, url: location.href, accurateTrackBounce:true, trackLinks:true});
+    </script>
+    <noscript><div><img src="https://mc.yandex.ru/watch/110838788" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+    <!-- /Yandex.Metrika counter -->
+
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Oswald:wght@500;700&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --bg-color: #030305;
+            --card-bg: rgba(10, 10, 16, 0.95);
+            --accent-color: #00ffcc;
+            --text-color: #ffffff;
+            --text-muted: #5f5f7a;
+            --glow-color: rgba(0, 255, 204, 0.25);
+        }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-image: radial-gradient(circle at center, #090914 0%, #030305 100%);
+            padding: 20px;
+            margin: 0;
+        }
+        .player-container { max-width: 480px; width: 100%; z-index: 2; }
+        .player-card {
+            background-color: var(--card-bg);
+            border: 1px solid rgba(255, 255, 255, 0.03);
+            border-radius: 28px;
+            padding: 30px 25px;
+            box-shadow: 0 30px 70px rgba(0,0,0,0.9), 0 0 40px var(--glow-color);
+            position: relative;
+            text-align: center;
+        }
+        .player-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 15%; width: 70%; height: 2px;
+            background: linear-gradient(90deg, transparent, var(--accent-color), transparent);
+            box-shadow: 0 0 10px var(--accent-color);
+        }
+        .player-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 25px;
+        }
+        .logo-text {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.2rem;
+            font-weight: 900;
+            letter-spacing: 2px;
+            color: #fff;
+            text-shadow: 0 0 10px var(--glow-color);
+        }
+        .btn-info {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: var(--text-muted);
+            padding: 6px 12px;
+            border-radius: 12px;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 0.7rem;
+            cursor: pointer;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.3s;
+        }
+        .btn-info:hover {
+            color: var(--accent-color);
+            border-color: var(--accent-color);
+            box-shadow: 0 0 10px var(--glow-color);
+        }
+        .genres-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 8px;
+            margin-bottom: 25px;
+            background: rgba(0, 0, 0, 0.3);
+            padding: 8px;
+            border-radius: 18px;
+            border: 1px solid rgba(255, 255, 255, 0.02);
+        }
+        .genre-btn {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            color: #8c8ca3;
+            padding: 10px 4px;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 0.65rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            cursor: pointer;
+            border-radius: 10px;
+            letter-spacing: 0.5px;
+            transition: all 0.3s;
+        }
+        .genre-btn:hover { color: #fff; background: rgba(255, 255, 255, 0.05); }
+        .genre-btn.active {
+            background: var(--accent-color);
+            color: #000;
+            border-color: var(--accent-color);
+            box-shadow: 0 0 12px var(--glow-color);
+        }
+        .visualizer-sphere {
+            width: 150px;
+            height: 150px;
+            margin: 0 auto 20px;
+            border-radius: 50%;
+            border: 2px dashed var(--accent-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 0 25px var(--glow-color);
+            position: relative;
+            transition: all 0.3s;
+        }
+        .visualizer-sphere.playing {
+            animation: pulse-sphere 1.5s infinite alternate, rotate-sphere 25s linear infinite;
+        }
+        @keyframes pulse-sphere {
+            0% { transform: scale(1); box-shadow: 0 0 15px var(--glow-color); }
+            100% { transform: scale(1.05); box-shadow: 0 0 35px var(--glow-color); }
+        }
+        @keyframes rotate-sphere {
+            100% { transform: rotate(360deg); }
+        }
+        .neural-node {
+            width: 130px;
+            height: 130px;
+            border-radius: 50%;
+            border: 2px solid var(--accent-color);
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: absolute;
+            background-image: radial-gradient(circle, rgba(0,0,0,0.2) 0%, rgba(0,0,0,0.8) 100%);
+            overflow: hidden;
+        }
+        .neural-node svg {
+            width: 55px;
+            height: 55px;
+            filter: drop-shadow(0 0 8px var(--accent-color));
+            z-index: 2;
+            color: var(--accent-color);
+        }
+        .neural-node::after {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            border-radius: 50%;
+            background: linear-gradient(135deg, rgba(255,255,255,0.08) 0%, rgba(255,255,255,0) 50%, rgba(0,0,0,0.5) 100%);
+            pointer-events: none;
+            z-index: 3;
+        }
+        .track-info { margin-bottom: 25px; height: 70px; }
+        .track-title {
+            font-family: 'Oswald', sans-serif;
+            font-size: 1.5rem;
+            text-transform: uppercase;
+            margin-bottom: 4px;
+            letter-spacing: 1px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        .track-artist {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 0.75rem;
+            color: var(--accent-color);
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+        .controls { display: flex; justify-content: center; margin-bottom: 20px; }
+        .btn-play {
+            background: var(--accent-color);
+            border: none;
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 0 20px var(--glow-color);
+            outline: none;
+            transition: transform 0.2s;
+        }
+        .btn-play:hover { transform: scale(1.06); }
+        .play-icon {
+            width: 0; height: 0;
+            border-style: solid;
+            border-width: 10px 0 10px 18px;
+            border-color: transparent transparent transparent #000;
+            margin-left: 4px;
+        }
+        .pause-icon { display: flex; gap: 5px; }
+        .pause-icon span { display: block; width: 5px; height: 18px; background: #000; }
+        .volume-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            margin-bottom: 20px;
+        }
+        .volume-slider {
+            -webkit-appearance: none;
+            width: 130px;
+            height: 2px;
+            background: #151522;
+            border-radius: 2px;
+            outline: none;
+        }
+        .volume-slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            width: 10px; height: 10px;
+            border-radius: 50%;
+            background: var(--accent-color);
+            cursor: pointer;
+            box-shadow: 0 0 8px var(--accent-color);
+        }
+        .equalizer {
+            display: flex;
+            justify-content: center;
+            align-items: flex-end;
+            gap: 4px;
+            height: 20px;
+            opacity: 0.15;
+            transition: opacity 0.3s;
+        }
+        .equalizer.active { opacity: 1; }
+        .bar {
+            width: 3px;
+            height: 2px;
+            background-color: var(--accent-color);
+            animation: bounce 0.1s ease infinite alternate;
+            animation-play-state: paused;
+        }
+        .equalizer.active .bar { animation-play-state: running; }
+        .bar:nth-child(1) { animation-duration: 0.3s; }
+        .bar:nth-child(2) { animation-duration: 0.2s; }
+        .bar:nth-child(3) { animation-duration: 0.4s; }
+        .bar:nth-child(4) { animation-duration: 0.15s; }
+        .bar:nth-child(5) { animation-duration: 0.25s; }
+        @keyframes bounce { 100% { height: 20px; } }
+        .modal-overlay {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(3, 3, 5, 0.85);
+            backdrop-filter: blur(12px);
+            z-index: 10;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+        }
+        .modal-overlay.open { opacity: 1; pointer-events: auto; }
+        .modal-card {
+            background: #0d0d14;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 24px;
+            max-width: 400px;
+            width: 90%;
+            padding: 30px;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+            text-align: center;
+            transform: scale(0.9);
+            transition: transform 0.3s ease;
+        }
+        .modal-overlay.open .modal-card { transform: scale(1); }
+        .modal-title {
+            font-family: 'Oswald', sans-serif;
+            font-size: 1.8rem;
+            text-transform: uppercase;
+            margin-bottom: 15px;
+            letter-spacing: 1px;
+            color: var(--accent-color);
+        }
+        .modal-text {
+            font-size: 0.95rem;
+            line-height: 1.6;
+            color: #a5a5c3;
+            margin-bottom: 25px;
+            font-weight: 300;
+        }
+        .btn-close {
+            background: var(--accent-color);
+            border: none;
+            color: #000;
+            padding: 10px 24px;
+            border-radius: 12px;
+            font-family: 'Orbitron', sans-serif;
+            font-weight: 700;
+            font-size: 0.8rem;
+            cursor: pointer;
+            text-transform: uppercase;
+            box-shadow: 0 0 15px var(--glow-color);
+        }
+        .btn-close:hover { transform: scale(1.05); }
+        @media (max-width: 400px) {
+            .genres-grid { grid-template-columns: repeat(2, 1fr); }
+            .player-card { padding: 25px 15px; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="player-container">
+        <div class="player-card">
+            <div class="player-header">
+                <span class="logo-text" id="logo-text">NEURA FM</span>
+                <button class="btn-info" id="open-info-btn">О проекте</button>
+            </div>
+            <div class="genres-grid" id="channel-container"></div>
+            <div class="visualizer-sphere" id="logo">
+                <div class="neural-node" id="genre-cover"></div>
+            </div>
+            <div class="track-info">
+                <div class="track-title" id="track-title">Выбери жанр</div>
+                <div class="track-artist" id="track-artist">ИИ РАДИОСТАНЦИЯ</div>
+            </div>
+            <div class="controls">
+                <button class="btn-play" id="btn-play" aria-label="Play">
+                    <div class="play-icon" id="play-btn-icon"></div>
+                </button>
+            </div>
+            <div class="volume-container">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="var(--text-muted)" stroke-width="2"><path d="M11 5L6 9H2v6h4l5 4V5z"></path></svg>
+                <input type="range" class="volume-slider" id="volume" min="0" max="1" step="0.05" value="0.8">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="var(--text-muted)" stroke-width="2"><path d="M11 5L6 9H2v6h4l5 4V5z"></path><path d="M19.07 4.93a10 10 0 0 1 0 14.14"></path></svg>
+            </div>
+            <div class="equalizer" id="equalizer">
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal-overlay" id="modal-overlay">
+        <div class="modal-card">
+            <h3 class="modal-title">NEURA ROCK</h3>
+            <p class="modal-text">
+                Добро пожаловать в будущее рок-музыки. Это первая полностью автономная нейро-радиостанция.<br><br>
+                Каждый трек, рифф, барабанная партия и вокал созданы передовыми моделями искусственного интеллекта. Мы стираем границы между человеческим драйвом и цифровым разумом, генерируя бесконечный эфир в 12 культовых рок-направлениях.
+            </p>
+            <button class="btn-close" id="close-info-btn">Понятно</button>
+        </div>
+    </div>
+
+    <script>
+        // КОНФИГУРАЦИЯ ЖАНРОВ
+        const channels = {
+            cyberpunk: {
+                name: "Cyberpunk",
+                color: "#00ffcc",
+                glow: "rgba(0, 255, 204, 0.3)",
+                folder: "/music/cyberpunk/",
+                svgIcon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>`
+            },
+            industrial: {
+                name: "Industrial",
+                color: "#ff5500",
+                glow: "rgba(255, 85, 0, 0.3)",
+                folder: "/music/industrial/",
+                svgIcon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 11-2.83 2.83l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-4 0v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 11-2.83-2.83l.06-.06a1.65 1.65 0 00.33-1.82 1.65 1.65 0 00-1.51-1H3a2 2 0 010-4h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 112.83-2.83l.06.06a1.65 1.65 0 001.82.33H9a1.65 1.65 0 001-1.51V3a2 2 0 014 0v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 112.83 2.83l-.06.06a1.65 1.65 0 00-.33 1.82V9a1.65 1.65 0 001.51 1H21a2 2 0 010 4h-.09a1.65 1.65 0 00-1.51 1z"/></svg>`
+            },
+            grunge: {
+                name: "Grunge",
+                color: "#b026ff",
+                glow: "rgba(176, 38, 255, 0.3)",
+                folder: "/music/grunge/",
+                svgIcon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 4.435C10.011-.545 0 .578 0 8.474c0 5.613 12 14.526 12 14.526s12-8.913 12-14.526c0-7.896-10.011-9.019-12-4.039zM12 4v4l-2 2 3 3-2 3"/></svg>`
+            },
+            psychedelic: {
+                name: "Psychedelic",
+                color: "#ff00aa",
+                glow: "rgba(255, 0, 170, 0.3)",
+                folder: "/music/psychedelic/",
+                svgIcon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/><path d="M12 5v2M12 17v2M5 12H3M21 12h-2"/></svg>`
+            },
+            progressive: {
+                name: "Progressive",
+                color: "#00aaff",
+                glow: "rgba(0, 170, 255, 0.3)",
+                folder: "/music/progressive/",
+                svgIcon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><ellipse cx="12" cy="12" rx="3" ry="9" transform="rotate(45 12 12)"/><ellipse cx="12" cy="12" rx="3" ry="9" transform="rotate(-45 12 12)"/><circle cx="12" cy="12" r="1.5"/></svg>`
+            },
+            punk: {
+                name: "Punk Rock",
+                color: "#ff3333",
+                glow: "rgba(255, 51, 51, 0.3)",
+                folder: "/music/punk/",
+                svgIcon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 3l-6 15M12 3l6 15M7 14h10"/></svg>`
+            },
+            alternative: {
+                name: "Alternative",
+                color: "#ffff00",
+                glow: "rgba(255, 255, 0, 0.25)",
+                folder: "/music/alternative/",
+                svgIcon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>`
+            },
+            heavy: {
+                name: "Heavy Metal",
+                color: "#ff0055",
+                glow: "rgba(255, 0, 85, 0.3)",
+                folder: "/music/heavy/",
+                svgIcon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M18 10V4a2 2 0 00-4 0v6M6 10V3a2 2 0 014 0v7M10 10V7a1.5 1.5 0 013 0v3m-7 3h12v4a3 3 0 01-3 3H9a3 3 0 01-3-3v-4z"/></svg>`
+            },
+            power: {
+                name: "Power Metal",
+                color: "#33ff33",
+                glow: "rgba(51, 255, 51, 0.3)",
+                folder: "/music/power/",
+                svgIcon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>`
+            },
+            numetal: {
+                name: "Nu Metal",
+                color: "#e600ff",
+                glow: "rgba(230, 0, 255, 0.3)",
+                folder: "/music/numetal/",
+                svgIcon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="2"/><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/></svg>`
+            },
+            folk: {
+                name: "Folk Rock",
+                color: "#00ff66",
+                glow: "rgba(0, 255, 102, 0.3)",
+                folder: "/music/folk/",
+                svgIcon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2L2 22h20L12 2zm0 4v12M8 14h8"/></svg>`
+            },
+            glam: {
+                name: "Glam Rock",
+                color: "#ff8800",
+                glow: "rgba(255, 136, 0, 0.3)",
+                folder: "/music/glam/",
+                svgIcon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 4l3 12h14l3-12-6 7-4-7-4 7-6-7zM5 20h14"/></svg>`
+            }
+        };
+
+        // Глобальные переменные
+        let currentChannelKey = 'grunge';
+        let isPlaying = false;
+        let playlist = [];
+        let trackNames = [];
+        let lastTrackIndex = -1; // Для защиты от повторов
+        let audioContext = null;
+        let isGenerating = false;
+
+        // DOM элементы
+        const btnPlay = document.getElementById('btn-play');
+        const playBtnIcon = document.getElementById('play-btn-icon');
+        const logo = document.getElementById('logo');
+        const logoText = document.getElementById('logo-text');
+        const genreCover = document.getElementById('genre-cover');
+        const equalizer = document.getElementById('equalizer');
+        const volumeSlider = document.getElementById('volume');
+        const trackTitle = document.getElementById('track-title');
+        const trackArtist = document.getElementById('track-artist');
+        const channelContainer = document.getElementById('channel-container');
+
+        // Аудио элемент
+        const audio = new Audio();
+
+        // Модальные окна
+        const modal = document.getElementById('modal-overlay');
+        const openModalBtn = document.getElementById('open-info-btn');
+        const closeModalBtn = document.getElementById('close-info-btn');
+
+        openModalBtn.onclick = () => modal.classList.add('open');
+        closeModalBtn.onclick = () => modal.classList.remove('open');
+        modal.onclick = (e) => { if(e.target === modal) modal.classList.remove('open'); }
+
+        // Построение меню каналов
+        function buildChannelMenu() {
+            channelContainer.innerHTML = '';
+            Object.keys(channels).forEach(key => {
+                const btn = document.createElement('button');
+                btn.className = `genre-btn ${key === currentChannelKey ? 'active' : ''}`;
+                btn.textContent = channels[key].name;
+                btn.onclick = () => switchChannel(key);
+                channelContainer.appendChild(btn);
+            });
+        }
+
+        // Применение стиля канала
+        function applyStyle(key) {
+            const chan = channels[key];
+            const root = document.documentElement;
+            root.style.setProperty('--accent-color', chan.color);
+            root.style.setProperty('--glow-color', chan.glow);
+            logoText.style.textShadow = `0 0 10px ${chan.glow}`;
+            genreCover.innerHTML = chan.svgIcon;
+            genreCover.style.borderColor = chan.color;
+            if (!isPlaying) {
+                trackArtist.textContent = chan.name.toUpperCase();
+                trackTitle.textContent = "Готов к вещанию";
+            }
+        }
+
+        // Загрузка плейлиста из админки
+        async function loadPlaylist(key) {
+            try {
+                const response = await fetch('/admin/api.php?genre=' + key);
+                const data = await response.json();
+                if (data && data.length > 0) {
+                    playlist = data.map(t => t.url);
+                    trackNames = data.map(t => t.title);
+                    // Сбрасываем lastTrackIndex при загрузке нового плейлиста
+                    lastTrackIndex = -1;
+                    return true;
+                }
+            } catch(e) {
+                console.log('Ошибка загрузки:', e);
+            }
+            return false;
+        }
+
+        // Переключение канала
+        async function switchChannel(key) {
+            if (key === currentChannelKey) return;
+            currentChannelKey = key;
+            
+            const buttons = channelContainer.querySelectorAll('.genre-btn');
+            Object.keys(channels).forEach((k, idx) => {
+                buttons[idx].classList.remove('active');
+                if (k === key) buttons[idx].classList.add('active');
+            });
+            
+            applyStyle(key);
+            
+            if (isPlaying) {
+                audio.pause();
+                await loadPlaylist(key);
+                if (playlist.length > 0) {
+                    playTrack(); // Первый трек будет случайным
+                } else {
+                    isPlaying = false;
+                    updateUI();
+                }
+            }
+        }
+
+        // ========== ГЛАВНАЯ ФУНКЦИЯ - РАНДОМНОЕ ВОСПРОИЗВЕДЕНИЕ ==========
+        function playTrack() {
+            if (playlist.length === 0) {
+                generateFallbackSound();
+                return;
+            }
+            
+            let randomIndex;
+            
+            // Если больше одного трека, исключаем последний проигранный
+            if (playlist.length > 1) {
+                do {
+                    randomIndex = Math.floor(Math.random() * playlist.length);
+                } while (randomIndex === lastTrackIndex);
+            } else {
+                randomIndex = 0;
+            }
+            
+            lastTrackIndex = randomIndex;
+            
+            audio.src = playlist[randomIndex];
+            audio.load();
+            audio.play()
+                .then(() => {
+                    isPlaying = true;
+                    updateUI();
+                    // Показываем название трека
+                    if (trackNames && trackNames[randomIndex]) {
+                        trackTitle.textContent = trackNames[randomIndex];
+                    } else {
+                        const fileName = playlist[randomIndex].split('/').pop().replace('.mp3', '').replace(/_/g, ' ');
+                        trackTitle.textContent = fileName;
+                    }
+                    trackArtist.textContent = channels[currentChannelKey].name.toUpperCase();
+                })
+                .catch(() => {
+                    generateFallbackSound();
+                });
+        }
+
+        // Генерация звука (фоллбэк)
+        function generateFallbackSound() {
+            if (!audioContext) {
+                audioContext = new (window.AudioContext || window.webkitAudioContext)();
+            }
+            
+            const duration = 30;
+            const sampleRate = audioContext.sampleRate;
+            const buffer = audioContext.createBuffer(2, sampleRate * duration, sampleRate);
+            
+            for (let channel = 0; channel < buffer.numberOfChannels; channel++) {
+                const data = buffer.getChannelData(channel);
+                for (let i = 0; i < data.length; i++) {
+                    const t = i / sampleRate;
+                    let guitar = 0;
+                    for (let h = 1; h <= 5; h++) {
+                        guitar += Math.sin(2 * Math.PI * 110 * h * t) * (0.3 / h);
+                    }
+                    let distorted = Math.tanh(guitar * 5) * 0.4;
+                    const kick = (i % Math.floor(sampleRate / 2) < 80) ? Math.random() * 0.3 : 0;
+                    const snare = (i % Math.floor(sampleRate / 1.5) < 50) ? Math.random() * 0.2 : 0;
+                    let sample = distorted * 0.6 + kick * 0.3 + snare * 0.3;
+                    sample = Math.max(-0.8, Math.min(0.8, sample));
+                    data[i] = sample;
+                }
+            }
+            
+            const source = audioContext.createBufferSource();
+            source.buffer = buffer;
+            const gain = audioContext.createGain();
+            gain.gain.value = parseFloat(volumeSlider.value);
+            source.connect(gain);
+            gain.connect(audioContext.destination);
+            
+            source.onended = () => {
+                if (isPlaying && isGenerating) {
+                    generateFallbackSound();
+                }
+            };
+            
+            source.start();
+            isGenerating = true;
+            trackTitle.textContent = "🎸 AI Генерация";
+            trackArtist.textContent = channels[currentChannelKey].name.toUpperCase();
+            isPlaying = true;
+            updateUI();
+        }
+
+        // Переключение воспроизведения
+        async function togglePlay() {
+            if (!isPlaying) {
+                const hasTracks = await loadPlaylist(currentChannelKey);
+                if (hasTracks && playlist.length > 0) {
+                    playTrack(); // Первый трек случайный
+                } else {
+                    generateFallbackSound();
+                }
+            } else {
+                audio.pause();
+                if (audioContext) {
+                    audioContext.close();
+                    audioContext = null;
+                }
+                isPlaying = false;
+                isGenerating = false;
+                updateUI();
+            }
+        }
+
+        // Обновление UI
+        function updateUI() {
+            if (isPlaying) {
+                playBtnIcon.innerHTML = `<span></span><span></span>`;
+                playBtnIcon.className = "pause-icon";
+                logo.classList.add('playing');
+                equalizer.classList.add('active');
+            } else {
+                playBtnIcon.innerHTML = '';
+                playBtnIcon.className = "play-icon";
+                logo.classList.remove('playing');
+                equalizer.classList.remove('active');
+                trackTitle.textContent = "Нажми Play";
+                trackArtist.textContent = channels[currentChannelKey].name.toUpperCase();
+            }
+        }
+
+        // Обработчики событий
+        btnPlay.addEventListener('click', togglePlay);
+        
+        volumeSlider.addEventListener('input', (e) => {
+            audio.volume = parseFloat(e.target.value);
+        });
+
+        // ========== АВТОМАТИЧЕСКОЕ ПЕРЕКЛЮЧЕНИЕ НА СЛУЧАЙНЫЙ ТРЕК ==========
+        audio.addEventListener('ended', () => {
+            if (isPlaying) {
+                if (playlist.length > 0) {
+                    playTrack(); // Всегда случайный
+                } else {
+                    generateFallbackSound();
+                }
+            }
+        });
+
+        // Инициализация
+        function init() {
+            buildChannelMenu();
+            applyStyle(currentChannelKey);
+            trackTitle.textContent = "Готов к вещанию";
+            trackArtist.textContent = channels[currentChannelKey].name.toUpperCase();
+            loadPlaylist(currentChannelKey);
+        }
+
+        init();
+    </script>
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "NEURA ROCK",
+      "url": "https://rock-ai.online",
+      "description": "Первое ИИ-радио, где нейросети создают рок-музыку в реальном времени.",
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": "https://rock-ai.online/search?q={search_term_string}",
+        "query-input": "required name=search_term_string"
+      }
+    }
+    </script>
+</body>
+</html>

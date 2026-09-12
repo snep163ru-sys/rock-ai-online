@@ -1,0 +1,166 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630">
+  <defs>
+    <!-- Шрифты из Google Fonts -->
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@900&amp;family=Oswald:wght@500;700&amp;family=Roboto:wght@300;700&amp;display=swap');
+      
+      .title-text {
+        font-family: 'Orbitron', sans-serif;
+        font-size: 72px;
+        font-weight: 900;
+        fill: #ffffff;
+        letter-spacing: 5px;
+      }
+      .subtitle-text {
+        font-family: 'Oswald', sans-serif;
+        font-size: 24px;
+        font-weight: 700;
+        fill: #00ffcc;
+        letter-spacing: 8px;
+        text-transform: uppercase;
+      }
+      .desc-text {
+        font-family: 'Roboto', sans-serif;
+        font-size: 18px;
+        font-weight: 300;
+        fill: #8c8ca3;
+        letter-spacing: 1px;
+      }
+      .link-text {
+        font-family: 'Orbitron', sans-serif;
+        font-size: 20px;
+        font-weight: 700;
+        fill: #00ffcc;
+        letter-spacing: 3px;
+      }
+    </style>
+
+    <!-- Градиенты -->
+    <radialGradient id="bg-glow" cx="50%" cy="50%" r="75%">
+      <stop offset="0%" stop-color="#0c0721" />
+      <stop offset="60%" stop-color="#040209" />
+      <stop offset="100%" stop-color="#010003" />
+    </radialGradient>
+
+    <linearGradient id="neon-cyan" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#00ffff" />
+      <stop offset="100%" stop-color="#00aaff" />
+    </linearGradient>
+
+    <linearGradient id="neon-pink" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ff00aa" />
+      <stop offset="100%" stop-color="#ff0055" />
+    </linearGradient>
+
+    <!-- Эффекты неонового свечения -->
+    <filter id="glow-cyan" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="8" result="blur1" />
+      <feGaussianBlur stdDeviation="20" result="blur2" />
+      <feMerge>
+        <feMergeNode in="blur2" />
+        <feMergeNode in="blur1" />
+        <feMergeNode in="SourceGraphic" />
+      </feMerge>
+    </filter>
+
+    <filter id="glow-pink" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="10" result="blur" />
+      <feMerge>
+        <feMergeNode in="blur" />
+        <feMergeNode in="SourceGraphic" />
+      </feMerge>
+    </filter>
+  </defs>
+
+  <!-- Задний фон -->
+  <rect width="1200" height="630" fill="url(#bg-glow)" />
+
+  <!-- Кибер-сетка на бэкграунде -->
+  <g opacity="0.05" stroke="#00ffcc" stroke-width="1">
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M 40 0 L 0 0 0 40" fill="none" />
+    </pattern>
+    <rect width="1200" height="630" fill="url(#grid)" />
+  </g>
+
+  <!-- Декоративные диагональные линии -->
+  <path d="M-100,100 L500,700" stroke="url(#neon-pink)" stroke-width="1" opacity="0.15" />
+  <path d="M800,-100 L1400,500" stroke="url(#neon-cyan)" stroke-width="1" opacity="0.1" />
+
+  <!-- ================= ЛЕВАЯ ЧАСТЬ: АРТ-ОБЪЕКТ ================= -->
+  <g transform="translate(300, 315)">
+    <!-- Внешние технологические орбиты -->
+    <circle r="220" fill="none" stroke="#00ffcc" stroke-width="1" stroke-dasharray="10, 15" opacity="0.2" />
+    <circle r="180" fill="none" stroke="#ff00aa" stroke-width="1" stroke-dasharray="40, 8" opacity="0.3" />
+    <circle r="140" fill="none" stroke="#00ffcc" stroke-width="2" opacity="0.1" />
+
+    <!-- Направляющие линии ИИ-разума -->
+    <line x1="-240" y1="0" x2="240" y2="0" stroke="#00ffcc" stroke-width="1" opacity="0.15" />
+    <line x1="0" y1="-240" x2="0" y2="240" stroke="#00ffcc" stroke-width="1" opacity="0.15" />
+
+    <!-- Светящиеся узлы (нейросети) -->
+    <circle cx="-180" cy="-100" r="4" fill="#00ffcc" filter="url(#glow-cyan)" />
+    <circle cx="180" cy="100" r="5" fill="#ff00aa" filter="url(#glow-pink)" />
+    <circle cx="120" cy="-160" r="3" fill="#00ffcc" />
+    <circle cx="-150" cy="130" r="4" fill="#ff00aa" />
+
+    <!-- Главная Кибер-Призма (Треугольник) -->
+    <polygon points="0,-110 -100,70 100,70" fill="none" stroke="url(#neon-cyan)" stroke-width="4" filter="url(#glow-cyan)" />
+    
+    <!-- Внутренний силовой сердечник -->
+    <polygon points="0,-70 -60,40 60,40" fill="none" stroke="#ff00aa" stroke-width="2" opacity="0.7" />
+
+    <!-- Розовая Лазерная Молния, пробивающая призму (Рок-драйв) -->
+    <polygon points="-20,-170 30,-30 -10,0 40,150 0,160 -30,30 10,10" fill="url(#neon-pink)" filter="url(#glow-pink)" />
+    
+    <!-- Точка взрыва энергии в центре -->
+    <circle cx="8" cy="5" r="15" fill="#ffffff" filter="url(#glow-cyan)" />
+  </g>
+
+  <!-- ================= ПРАВАЯ ЧАСТЬ: ИНФО-СТЕНД ================= -->
+  
+  <!-- Декоративный уголок (рамка) сверху справа -->
+  <path d="M1130,50 L1150,50 L1150,70" fill="none" stroke="#00ffcc" stroke-width="3" opacity="0.6" />
+  <!-- Декоративный уголок снизу справа -->
+  <path d="M1130,580 L1150,580 L1150,560" fill="none" stroke="#00ffcc" stroke-width="3" opacity="0.6" />
+
+  <g transform="translate(620, 0)">
+    <!-- Надзаголовок -->
+    <text y="190" class="subtitle-text" filter="url(#glow-cyan)">FIRST AI RADIO</text>
+    
+    <!-- Главный Логотип с двойным свечением -->
+    <text y="275" class="title-text" filter="url(#glow-pink)" fill="#ff00aa">NEURA</text>
+    <text y="275" x="290" class="title-text" filter="url(#glow-cyan)">ROCK</text>
+
+    <!-- Разделительная линия -->
+    <line x1="0" y1="315" x2="480" y2="315" stroke="url(#neon-cyan)" stroke-width="2" filter="url(#glow-cyan)" />
+    
+    <!-- Описание -->
+    <text y="360" class="desc-text">Добро пожаловать в автономное будущее рок-музыки.</text>
+    <text y="388" class="desc-text">12 культовых рок-направлений, сгенерированных</text>
+    <text y="416" class="desc-text">нейросетями в режиме реального времени.</text>
+
+    <!-- Светящаяся рамка-кнопка с адресом сайта -->
+    <g transform="translate(0, 465)">
+      <!-- Фон кнопки -->
+      <rect width="360" height="60" rx="15" fill="#0c0721" stroke="url(#neon-cyan)" stroke-width="2" filter="url(#glow-cyan)" />
+      <!-- Иконка "LIVE" внутри кнопки -->
+      <circle cx="40" cy="30" r="6" fill="#ff0055" filter="url(#glow-pink)">
+        <animate attributeName="opacity" values="1;0.2;1" dur="1.5s" repeatCount="indefinite" />
+      </circle>
+      <text x="60" y="37" class="link-text">ROCK-AI.ONLINE</text>
+    </g>
+  </g>
+
+  <!-- Декоративный технический штрих-код в самом низу -->
+  <g transform="translate(620, 565)" opacity="0.3" fill="#8c8ca3">
+    <rect x="0" width="3" height="15" />
+    <rect x="6" width="1" height="15" />
+    <rect x="10" width="2" height="15" />
+    <rect x="15" width="4" height="15" />
+    <rect x="22" width="1" height="15" />
+    <rect x="26" width="3" height="15" />
+    <rect x="32" width="1" height="15" />
+    <text x="42" y="12" font-family="monospace" font-size="10">SYS.LOC: 127.0.0.1 // PORT: 80</text>
+  </g>
+</svg>

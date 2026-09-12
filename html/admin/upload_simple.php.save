@@ -1,0 +1,96 @@
+<?php
+header('Content-Type: text/html; charset=utf-8');
+
+$message = '';
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_FILES['file'])) {
+    $genre = $_POST['genre'] ?? 'grunge';
+    $title = $_POST['title'] ?? 'Без названия';
+    
+    $target_dir = "/var/www/rock-ai.online/html/music/$genre/";
+    
+    // Создаем папку если нет
+    if (!file_exists($target_dir)) {
+        mkdir($target_dir, 0777, true);
+    }
+    
+    $file_name = time() . '.mp3';
+    $target_file = $target_dir . $file_name;
+    
+    if ($_FILES['file']['error'] !== UPLOAD_ERR_OK) {
+        $message = '❌ Ошибка загрузки! Код: ' . $_FILES['file']['error'];
+    } elseif (move_uploaded_file($_FILES['file']['tmp_name'], $target_file)) {
+        $message = '✅ Файл загружен!<br>Путь: ' . $target_file;
+    } else {
+        $message = '❌ Ошибка сохранения файла!';
+    }
+}
+?>
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Простая загрузка</title>
+    <style>
+        body { background: #030305; color: #fff; font-family: Arial; padding: 20px; }
+        .container { max-width: 600px; margin: 0 auto; background: #0a0a10; padding: 30px; border-radius: 15px; }
+        h1 { color: #00ffcc; }
+        form { display: flex; flex-direction: column; gap: 15px; }
+        select, input[type="text"], input[type="file"] {
+            padding: 10px;
+            background: #151520;
+            border: 1px solid #2a2a3e;
+            border-radius: 10px;
+            color: #fff;
+        }
+        button {
+            padding: 10px;
+            background: #00ffcc;
+            color: #000;
+            border: none;
+            border-radius: 10px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        .message {
+            padding: 15px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+        .success { background: rgba(0,255,204,0.1); color: #00ffcc; border: 1px solid #00ffcc; }
+        .error { background: rgba(255,0,0,0.1); color: #ff3333; border: 1px solid #ff3333; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>📤 Простая загрузка MP3</h1>
+        
+        <?php if ($message): ?>
+            <div class="<?php echo strpos($message, '✅') !== false ? 'success' : 'error'; ?>">
+                <?php echo $message; ?>
+            </div>
+        <?php endif; ?>
+        
+        <form method="POST" enctype="multipart/form-data">
+            <select name="genre" required>
+                <option value="grunge">Grunge</option>
+                <option value="cyberpunk">Cyberpunk</option>
+                <option value="industrial">Industrial</option>
+                <option value="psychedelic">Psychedelic</option>
+                <option value="progressive">Progressive</option>
+                <option value="punk">Punk Rock</option>
+                <option value="alternative">Alternative</option>
+                <option value="heavy">Heavy Metal</option>
+                <option value="power">Power Metal</option>
+                <option value="numetal">Nu Metal</option>
+                <option value="folk">Folk Rock</option>
+                <option value="glam">Glam Rock</option>
+            </select>
+            
+            <input type="text" name="title" placeholder="Название трека" required>
+            <input type="file" name="file" accept=".mp3" required>
+            <button type="submit">Загрузить</button>
+        </form>
+    </div>
+</body>
+</html>

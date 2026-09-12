@@ -1,0 +1,64 @@
+{
+  "cyberpunk": [
+    "cyberpunk rock, dark synthwave, heavy distorted guitars, electronic drums, dystopian atmosphere, male vocals",
+    "cyberpunk, industrial synth, roaring guitar, fast tempo, digital glitch effects, cybernetic theme",
+    "dark cyberpunk rock, arpeggiated synths, pounding drum machine, distorted bass, futuristic city vibe"
+  ],
+  "industrial": [
+    "industrial rock, heavy distorted guitar riff, pounding drum machine, synth bass, aggressive male vocals, mechanical beat, 120 BPM",
+    "industrial metal, downtuned guitar, electronic drums, harsh synth bass, screamed vocals, industrial noise, 130 BPM",
+    "dark industrial rock, slow heavy groove, cinematic strings, metallic percussion, spoken word to screamed chorus, 90 BPM",
+    "aggro industrial rock, four on the floor drum machine, razor synth lead, overdriven bass, shouted vocals, 130 BPM",
+    "industrial rock, glitch effects, distorted bass loops, chaotic drums, electronic noise, experimental, 110 BPM"
+  ],
+  "grunge": [
+    "grunge rock, heavy fuzzy guitars, sludgy bass, pounding drums, angsty male vocals, 90s alternative vibe, 100 BPM",
+    "grunge, distorted open chords, heavy riff, melancholic vocals, loud quiet loud dynamics, raw production",
+    "alternative grunge, down tuned guitars, heavy drums, brooding atmosphere, emotional male vocals"
+  ],
+  "psychedelic": [
+    "psychedelic rock, swirling guitars, analog synths, dreamy vocals, reverb drenched drums, trippy atmosphere, 95 BPM",
+    "psychedelic, phaser guitar, vintage organ, spacey male vocals, extended jams, experimental",
+    "psychedelic rock, wah wah guitar, heavy fuzz bass, mind bending solos, 60s retro futuristic vibe"
+  ],
+  "progressive": [
+    "progressive rock, complex time signatures, virtuoso guitar, keyboard synths, dynamic shifts, theatrical male vocals, epic atmosphere",
+    "progressive metal, technical riffing, odd meters, synthesizers, clean and harsh vocals, concept album vibe",
+    "progressive rock, evolving sections, melodic guitar solos, intricate drum patterns, atmospheric keyboards"
+  ],
+  "punk": [
+    "punk rock, fast power chords, driving drums, energetic shouted vocals, raw distortion, rebellious energy, 170 BPM",
+    "punk, fast tempo, simple heavy riffs, aggressive male vocals, lo fi production, anti establishment",
+    "punk rock, gang vocals, fast palm muted riffs, pounding drums, short intense song"
+  ],
+  "alternative": [
+    "alternative rock, melodic riffs, driving rhythm section, emotional male vocals, atmospheric verses, explosive choruses, 110 BPM",
+    "alternative, clean verse heavy chorus dynamics, jangly guitars, introspective lyrics, stadium rock energy",
+    "alternative rock, layered guitars, moody atmosphere, powerful vocals, anthemic chorus"
+  ],
+  "heavy": [
+    "heavy metal, galloping riffs, twin guitar harmonies, thunderous drums, soaring male vocals, classic metal energy, 140 BPM",
+    "heavy metal, palm muted verses, shredding guitar solo, double bass drums, powerful clean vocals",
+    "heavy metal, downpicking riffs, melodic solos, heavy rhythm section, traditional metal vibe"
+  ],
+  "power": [
+    "power metal, fast double bass drums, epic guitar melodies, high pitched male vocals, fantasy themes, symphonic elements, 160 BPM",
+    "power metal, galloping drums, soaring chorus, neo classical guitar leads, uplifting energy, choir backing vocals",
+    "power metal, fast riffing, epic keyboards, triumphant atmosphere, high tenor vocals, fantasy lyrics"
+  ],
+  "numetal": [
+    "nu metal, downtuned groovy riffs, turntable scratches, rap rock vocals, heavy bass drops, aggressive energy, 105 BPM",
+    "nu metal, chugging riffs, hip hop drum beats, screamed verses, melodic chorus, industrial elements",
+    "nu metal, heavy groove, sampling, distorted bass, angry rapped verses, big aggressive chorus"
+  ],
+  "folk": [
+    "folk rock, acoustic guitars, mandolin, fiddle, harmonious male vocals, earthy production, storytelling lyrics, 120 BPM",
+    "folk rock, banjo, acoustic strumming, folk melody, warm vocals, campfire atmosphere",
+    "folk rock, celtic influenced, tin whistle, acoustic guitar, driving rhythm, singalong chorus"
+  ],
+  "glam": [
+    "glam rock, catchy guitar riffs, hand claps, stomping drums, theatrical male vocals, anthemic chorus, 125 BPM",
+    "glam rock, arena rock energy, big chorus, saxophone, piano, flamboyant vocals, 70s retro vibe",
+    "glam rock, distorted power chords, singalong chorus, pounding drums, glamorous rock n roll energy"
+  ]
+}

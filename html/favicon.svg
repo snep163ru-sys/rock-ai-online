@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <!-- Фон -->
+  <rect width="100" height="100" rx="20" fill="#0a0a10"/>
+  
+  <!-- Внешнее свечение -->
+  <circle cx="50" cy="50" r="45" fill="none" stroke="#00ffcc" stroke-width="1" opacity="0.3"/>
+  
+  <!-- Внутренний круг -->
+  <circle cx="50" cy="50" r="35" fill="none" stroke="#00ffcc" stroke-width="2" opacity="0.5"/>
+  
+  <!-- Анимированная точка в центре (в статике просто круг) -->
+  <circle cx="50" cy="50" r="8" fill="#00ffcc">
+    <animate attributeName="r" values="8;12;8" dur="2s" repeatCount="indefinite"/>
+    <animate attributeName="opacity" values="1;0.5;1" dur="2s" repeatCount="indefinite"/>
+  </circle>
+  
+  <!-- Буква N -->
+  <text x="50" y="62" font-family="Orbitron, sans-serif" font-size="36" font-weight="900" fill="#00ffcc" text-anchor="middle">N</text>
+  
+  <!-- Декоративные линии -->
+  <line x1="15" y1="25" x2="35" y2="25" stroke="#00ffcc" stroke-width="1.5" opacity="0.4"/>
+  <line x1="65" y1="25" x2="85" y2="25" stroke="#00ffcc" stroke-width="1.5" opacity="0.4"/>
+  <line x1="15" y1="75" x2="35" y2="75" stroke="#00ffcc" stroke-width="1.5" opacity="0.4"/>
+  <line x1="65" y1="75" x2="85" y2="75" stroke="#00ffcc" stroke-width="1.5" opacity="0.4"/>
+</svg>

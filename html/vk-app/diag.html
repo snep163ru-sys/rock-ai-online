@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"></head>
+<body style="background:#030305;color:#00ffcc;font-family:monospace;padding:20px;font-size:16px">
+<h2>NEURA ROCK - Diagnostics</h2>
+<div id="log"></div>
+<script src="vk-bridge.min.js"></script>
+<script>
+const log = (m) => {
+  document.getElementById('log').innerHTML += '<div>' + m + '</div>';
+  console.log(m);
+};
+log('bridge loaded: ' + (typeof window.vkBridge !== 'undefined'));
+if (window.vkBridge) {
+  log('isWebView: ' + window.vkBridge.isWebView());
+  log('isIframe: ' + window.vkBridge.isIframe());
+  log('isEmbedded: ' + window.vkBridge.isEmbedded());
+  log('isStandalone: ' + window.vkBridge.isStandalone());
+  try {
+    window.vkBridge.send('VKWebAppInit').then((d) => {
+      log('VKWebAppInit success: ' + JSON.stringify(d));
+      log('APP INITIALIZED OK');
+    }).catch((e) => {
+      log('VKWebAppInit error: ' + JSON.stringify(e));
+    });
+  } catch(e) {
+    log('send threw: ' + e.message);
+  }
+  window.vkBridge.subscribe((event) => {
+    log('EVENT: ' + event.detail.type);
+  });
+} else {
+  log('BRIDGE NOT LOADED');
+}
+</script>
+</body>
+</html>
